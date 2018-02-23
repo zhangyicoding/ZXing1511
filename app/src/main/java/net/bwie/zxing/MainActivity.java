@@ -1,5 +1,6 @@
 package net.bwie.zxing;
 
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -64,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void generateQRCode(String content) {
         // 将文字转换为图片，即Bitmap
         try {
-            Bitmap qrCodeBitmap = EncodingHandler.createQRCode(content, 512);
+            String qrCode = new String(content.getBytes("UTF-8"), "ISO-8859-1");
+            Bitmap qrCodeBitmap = EncodingHandler.createQRCode(qrCode, 512);
             mQrCodeIv.setImageBitmap(qrCodeBitmap);
         } catch (Exception e) {
             e.printStackTrace();
